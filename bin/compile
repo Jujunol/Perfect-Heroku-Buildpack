@@ -146,6 +146,16 @@ step install swift_ver $SWIFT_VER
     rm -rf $CACHE_DIR/$SWIFT_VER-ubuntu14.04
 say Ok
 
+
+
+git clone https://github.com/mongodb/mongo-c-driver.git
+cd mongo-c-driver
+git checkout 1.4.0  # To build a particular release
+./autogen.sh --with-libbson=bundled
+make
+make install
+say Ok
+
 step Install Swift into BuildDir
 mkdir /app/.test/
 rsync -Pa $CACHE_DIR/.test/ $BUILD_DIR/.test/ > $BUILD_DIR/build.log || fail Renaming Swift dir
