@@ -145,14 +145,19 @@ step install swift_ver $SWIFT_VER
     rm -rf $CACHE_DIR/$SWIFT_VER-ubuntu14.04
 say Ok
 
+step Checking dependencies
+URL=http://www.perfect.org/_buildpack
+fetch cedar14-libmongoc.tar.gz
+fetch ubuntu14-libmongoc-rt.tar.gz
+say Ok
 
+step Decompressing dependencies
+decomp cedar14-libmongoc.tar.gz
+decomp ubuntu14-libmongoc-rt.tar.gz
+say Ok
 
-git clone https://github.com/mongodb/mongo-c-driver.git
-cd mongo-c-driver
-git checkout 1.4.0  # To build a particular release
-./autogen.sh --with-libbson=bundled
-make
-make install
+step Extracting dependencies
+untar cedar14-libmongoc.tar
 say Ok
 
 step Install Swift into BuildDir
