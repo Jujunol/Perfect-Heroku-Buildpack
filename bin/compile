@@ -71,9 +71,8 @@ step Setting environment
 BUILD_DIR=$1
 CACHE_DIR=$2
 SCRIPT_VER=3
-SWIFT_VER="swift-3.1"
-SWIFT_VER_LC="swift-DEVELOPMENT-SNAPSHOT-2016-09-05-a"
-#SWIFT_VER="swift-DEVELOPMENT-SNAPSHOT-2016-09-05-a"
+SWIFT_VER="swift-3.0.2-RELEASE-ubuntu14.04.tar.gz"
+SWIFT_VER_LC="swift-3.0.2-release"
 say Ok
 
 step Ensuring cache directory
@@ -135,9 +134,8 @@ grep -rl "prefix=/usr" $GREP_PATH | xargs sed -i 's|prefix=/usr|prefix=/app/.tes
 
 step install swift_ver $SWIFT_VER
     #release build 
-    #URL=https://swift.org/builds/$SWIFT_VER_LC/ubuntu1404/$SWIFT_VER
+    URL=https://swift.org/builds/$SWIFT_VER_LC/ubuntu1404/$SWIFT_VER
     #development build 
-    URL=https://swift.org/builds/development/ubuntu1404/$SWIFT_VER
     fetch $SWIFT_VER-ubuntu14.04.tar.gz
     decomp $SWIFT_VER-ubuntu14.04.tar.gz
     untar $SWIFT_VER-ubuntu14.04.tar
